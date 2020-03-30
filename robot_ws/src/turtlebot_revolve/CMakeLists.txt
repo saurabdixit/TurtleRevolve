@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 
 # Mention your package name 
-project(TurtlebotRevolve)
+project(turtlebot_revolve)
 
 ################################################################################
 # Find catkin packages and libraries for catkin and system dependencies

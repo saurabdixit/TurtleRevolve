@@ -12,5 +12,5 @@
   <param name="use_sim_time" value="$(arg use_sim_time)"/>
 
   <!-- Rotate the robot on launch -->
-  <node pkg="TurtlebotRevolve" type="revolve.py" name="revolve" output="screen"/>
+  <node pkg="turtlebot_revolve" type="revolve.py" name="revolve" output="screen"/>
 </launch>
