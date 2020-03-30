@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>simulation_app</name>
+  <name>TurtleSimulate</name>
   <version>1.0.0</version>
   <description>
     A package to test CI/CD pipeline in AWS

@@ -1,0 +1,92 @@
+{
+  "runConfigurations": [
+    {
+      "id": "68463189-b575-c0bb-0da4-4a2b532f8375",
+      "name": "TurtleActuator",
+      "type": "colcon build",
+      "cfg": {
+        "workingDir": "/TurtleRevolve/robot_ws",
+        "cmdArgs": ""
+      }
+    },
+    {
+      "id": "a593fb31-876c-b651-56fc-d278c71034d3",
+      "name": "TurtleSimulator",
+      "type": "colcon build",
+      "cfg": {
+        "workingDir": "/TurtleRevolve/simulation_ws",
+        "cmdArgs": ""
+      }
+    },
+    {
+      "id": "9f96fdc1-1d77-e7f0-3ce2-507d8db42118",
+      "name": "TurtleActuatorBundle",
+      "type": "colcon bundle",
+      "cfg": {
+        "workingDir": "/TurtleRevolve/robot_ws",
+        "cmdArgs": ""
+      }
+    },
+    {
+      "id": "e97453f9-9ecf-be2d-b3b8-4ee87ac614a5",
+      "name": "TurtleSimulatorBundle",
+      "type": "colcon bundle",
+      "cfg": {
+        "workingDir": "/TurtleRevolve/simulation_ws",
+        "cmdArgs": ""
+      }
+    },
+    {
+      "id": "f3e142c5-afc8-3875-06da-eb8fe23a65cf",
+      "name": "TurtleBotRevloveSimulation",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 300,
+          "failureBehavior": "Fail",
+          "iamRole": "arn:aws:iam::228023226109:role/RoboMakerAWSCall",
+          "outputLocation": "",
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "",
+          "sourceBundleFile": "",
+          "architecture": "X86_64",
+          "s3Bucket": "",
+          "launchConfig": {
+            "packageName": "",
+            "launchFile": "",
+            "environmentVariables": {}
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        },
+        "robotApp": {
+          "name": "TurtleBotApplication",
+          "sourceBundleFile": "/TurtleRevolve/robot_ws/bundle/output.tar",
+          "s3Bucket": "arn:aws:s3:::turtlebotinputbucket",
+          "architecture": "X86_64",
+          "launchConfig": {
+            "packageName": "robot_app",
+            "launchFile": "",
+            "environmentVariables": {}
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
+    }
+  ]
+}
