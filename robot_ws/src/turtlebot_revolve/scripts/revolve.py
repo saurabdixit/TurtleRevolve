@@ -12,8 +12,8 @@ class Revolver():
 
         r = rospy.Rate(10)
         while not rospy.is_shutdown():
-            self.twist.angular.z = 0.1
-            self.twist.linear.y = 0.1
+            self.twist.angular.z = 0.3
+            self.twist.linear.x = 1
             self._cmd_pub.publish(self.twist)
             rospy.loginfo("Revolving robot: %s", self.twist)
             r.sleep()

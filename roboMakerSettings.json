@@ -46,6 +46,58 @@
         "9f96fdc1-1d77-e7f0-3ce2-507d8db42118",
         "e97453f9-9ecf-be2d-b3b8-4ee87ac614a5"
       ]
+    },
+    {
+      "id": "98252d7c-935a-3b2c-60a9-03bae749230f",
+      "name": "TurtlebotSimulation",
+      "type": "simulation",
+      "cfg": {
+        "simulation": {
+          "maxJobDurationInSeconds": 300,
+          "failureBehavior": "Fail",
+          "iamRole": "arn:aws:iam::228023226109:role/RoboMakerAWSCall",
+          "outputLocation": "turtlebotoutputbucket",
+          "tags": {}
+        },
+        "simulationApp": {
+          "name": "turtle_simulate",
+          "sourceBundleFile": "/TurtleRevolve/simulation_ws/bundle/output.tar",
+          "architecture": "X86_64",
+          "s3Bucket": "turtlebotinputbucket",
+          "launchConfig": {
+            "packageName": "turtle_simulate",
+            "launchFile": "example.launch",
+            "environmentVariables": {}
+          },
+          "simulationSoftwareSuite": {
+            "name": "Gazebo",
+            "version": "9"
+          },
+          "renderingEngine": {
+            "name": "OGRE",
+            "version": "1.x"
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        },
+        "robotApp": {
+          "name": "turtlebot_revolve",
+          "sourceBundleFile": "/TurtleRevolve/robot_ws/bundle/output.tar",
+          "s3Bucket": "turtlebotinputbucket",
+          "architecture": "X86_64",
+          "launchConfig": {
+            "packageName": "turtlebot_revolve",
+            "launchFile": "revolve.launch",
+            "environmentVariables": {}
+          },
+          "robotSoftwareSuite": {
+            "name": "ROS",
+            "version": "Melodic"
+          }
+        }
+      }
     }
   ]
 }
