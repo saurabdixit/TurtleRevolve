@@ -24,9 +24,7 @@ phases:
       - . /opt/ros/$ROS_VERSION/setup.sh
       - rosdep update
       - sudo rosdep fix-permissions
-      - rosws update --target-workspace ./$ROBOT_WS
       - rosdep install --from-paths ./$ROBOT_WS/src --ignore-src -r -y
-      - rosws update --target-workspace ./$SIMULATION_WS
       - rosdep install --from-paths ./$SIMULATION_WS/src --ignore-src -r -y
   build: 
     commands: 
