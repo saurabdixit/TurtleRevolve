@@ -7,6 +7,9 @@ env:
     ROBOT_WS: robot_ws
     SIMULATION_WS: simulation_ws
     ROS_VERSION: melodic
+    ROBOT_APPLICATION: "arn:aws:robomaker:us-east-2:228023226109:robot-application/turtlebot_revolve/1585708383553"
+    SIMULATION_APPLICATION: "arn:aws:robomaker:us-east-2:228023226109:simulation-application/turtle_simulate/1585708373778"
+    IAM_ROLE: arn:aws:iam::228023226109:role/service-role/codebuild-TurtlebotRevolve-CodeBuild-service-role
 phases: 
   install: 
     commands: 
@@ -36,7 +39,8 @@ phases:
       #- COLCON_LOG_PATH="$CACHE_DIR/$SIMULATION_WS/logs" colcon bundle --base-paths "./$SIMULATION_WS" --build-base "$CACHE_DIR/$SIMULATION_WS/build" --install-base "$CACHE_DIR/$SIMULATION_WS/install" --bundle-base "$CACHE_DIR/$SIMULATION_WS/bundle"
       #- aws s3 cp $CACHE_DIR/$ROBOT_WS/bundle/output.tar s3://$S3_BUCKET/TurtleActuator.tar 
       #- aws s3 cp $CACHE_DIR/$SIMULATION_WS/bundle/output.tar s3://$S3_BUCKET/TurtleSimulator.tar
-      - aws robomaker create-simulation-application --name TurtlebotRevolveSimulator --sources s3Bucket=turtlebotinputbucket,s3Key=TurtleSimulator.tar,architecture=X86_64 --robot-software-suite name=ROS,version=Melodic --simulation-software-suite name=Gazebo,version=9 --rendering-engine name=OGRE,version=1.x 
+      #- aws robomaker create-simulation-application --name TurtlebotRevolveSimulator --sources s3Bucket=turtlebotinputbucket,s3Key=TurtleSimulator.tar,architecture=X86_64 --robot-software-suite name=ROS,version=Melodic --simulation-software-suite name=Gazebo,version=9 --rendering-engine name=OGRE,version=1.x 
+      - aws robomaker create-simulation-job --max-job-duration-in-seconds 300 --iam-role $IAM_ROLE --robot-applications application=$ROBOT_APPLICATION,launchConfig='{packageName=turtlebot_revolve,launchFile=revolve.launch}' --simulation-applications application=$SIMULATION_APPLICATION,launchConfig='{packageName=simulation_app,launchFile=example.launch}'
 cache:
   paths:
     - '$CACHE_DIR/**/*'
